@@ -31,7 +31,7 @@ class Service_rendered(models.Model):
         verbose_name_plural = 'Предоставленные услуги'
 
     def __str__(self):
-        return self.name +  ' [' + str(self.id)+ ']'
+        return self.name +  ' [ ' + str(self.id)+ ' ]'
 
         
 class Documentation(models.Model):
