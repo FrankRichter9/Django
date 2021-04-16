@@ -31,7 +31,7 @@ class Office_MFC(models.Model):
         return self.office_name
 
 class Worker(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete = models.CASCADE, null=True)
     office = models.ForeignKey(Office_MFC, on_delete = models.CASCADE, null=True)
     full_name = models.CharField('full name', max_length = 50, default='')
     phone_number = models.CharField('phone number', max_length = 20, default='')

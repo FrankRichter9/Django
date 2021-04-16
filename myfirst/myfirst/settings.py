@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'adminPanel.apps.AdminPanelConfig',
     'users.apps.UsersConfig',
     'organization.apps.OrganizationConfig',
     'services.apps.ServicesConfig',
@@ -45,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

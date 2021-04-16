@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from users.models import Worker, Client
 from organization.models import Organization
 
+SERVICE_STATUS = (
+        ('выполнена', 'выполнена'),
+        ('в процессе', "в процессе"),
+        ("не выполненна", "не выполненна")
+    )
 
 class Service(models.Model):  
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, null=True)
@@ -24,7 +29,8 @@ class Service_rendered(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, null=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
     comment = models.CharField('comment', max_length = 200, default='')
-    status = models.BooleanField('final')
+    status = models.CharField(max_length=18, choices=SERVICE_STATUS, default="не выполненна")
+    date = models.DateField('date', max_length=20, auto_now=True)
 
     class Meta: 
         verbose_name = 'Предоставленная услуга'
