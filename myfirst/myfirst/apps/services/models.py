@@ -23,7 +23,7 @@ class Service(models.Model):
         return self.name
 
 class Service_rendered(models.Model):
-    name = models.CharField('name', max_length = 20, default='')
+    name = models.CharField('name', max_length = 200, default='')
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True)
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, null=True)
@@ -37,7 +37,7 @@ class Service_rendered(models.Model):
         verbose_name_plural = 'Предоставленные услуги'
 
     def __str__(self):
-        return self.name +  ' [ ' + str(self.id)+ ' ]'
+        return self.name +  ' [ ' + str(self.client) + ' ]'
 
         
 class Documentation(models.Model):

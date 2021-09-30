@@ -1,23 +1,24 @@
 from rest_framework import serializers
 
-from .models import Organization, Office_Organization
+from .models import Office_MFC, Client
 
 
-class OrganizationSerializer(serializers.HyperlinkedModelSerializer):
+class ClientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Organization
+        model = Client
         fields = (
-            'id',
-            'name',
-            'activity'
+            'user',
+            'full_name',
+            'addres',
+            'passport',
+            'phone-number'
         )
 
-class Office_OrganizationSerializer(serializers.HyperlinkedModelSerializer):
+class Office_MFCSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model=Office_Organization
+        model=Office_MFC
         fields = (
-            'id',
-            'organization',
+            'office_name',
             'addres',
             'phone_number'
         )
